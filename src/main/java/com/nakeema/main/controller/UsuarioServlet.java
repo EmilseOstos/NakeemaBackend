@@ -9,6 +9,12 @@ import java.io.IOException;
 
 @WebServlet(name = "UsuarioServlet", urlPatterns = {"/registro"})
 public class UsuarioServlet extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Cuando el usuario accede a la URL directamente (petición GET),
+        // lo redireccionamos al formulario de registro inicial.
+        request.getRequestDispatcher("index.jsp").forward(request, response);
+    }
 
     private UsuarioDAO usuarioDAO = new UsuarioDAO();
 
