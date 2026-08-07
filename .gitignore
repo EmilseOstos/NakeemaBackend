@@ -1,0 +1,18 @@
+# Dependencias de Node
+node_modules/
+
+# Archivos de entorno (claves, credenciales)
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+
+# Sistemas operativos
+.DS_Store
+
+# IDEs
+.idea/
+*.iml
+.vscode/
