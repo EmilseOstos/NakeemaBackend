@@ -1,2 +1,2 @@
-Enlace del repositorio GitHub del proyecto NakeemaBackend (servicio web):
+Enlace del repositorio GitHub del proyecto NakeemaBackend (servicios web / API REST):
 https://github.com/EmilseOstos/NakeemaBackend.git

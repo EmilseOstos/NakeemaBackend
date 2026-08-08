@@ -1,152 +1,70 @@
 /**
  * =====================================================================
- * Nakeema-Backend - Servicio Web (API REST)
+ * Nakeema API REST - Punto de entrada del servidor
  * ---------------------------------------------------------------------
- * Evidencia: GA7-220501096-AA5-EV01 "Diseño y desarrollo de servicios web"
- * Tecnologías: Node.js, Express, MySQL (mysql2), CORS, body-parser
+ * Evidencia: GA7-220501096-AA5-EV03 "Diseño y desarrollo de servicios web"
+ * Tecnologías: Node.js, Express 5, MySQL (mysql2), CORS, body-parser
  *
- * Servicio web que expone dos endpoints:
- *   - POST /api/register  -> Registro de un nuevo usuario
- *   - POST /api/login     -> Inicio de sesión (autenticación)
- *
- * Si la autenticación es correcta devuelve un mensaje de autenticación
- * satisfactoria; en caso contrario devuelve un error de autenticación.
+ * Este servidor expone los servicios web (API REST) necesarios para el
+ * proyecto formativo Nakeema: autenticación, clientes, técnicos,
+ * servicios, solicitudes, proveedores, inventario, chat, satisfacción
+ * y reportes.
  * =====================================================================
  */
 
 const express = require('express');
-const mysql = require('mysql2');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
-// Configuración básica del servidor Express
+// Importación de las rutas (servicios) de la API
+const authRoutes = require('./routes/auth.routes');
+const clienteRoutes = require('./routes/clientes.routes');
+const tecnicoRoutes = require('./routes/tecnicos.routes');
+const servicioRoutes = require('./routes/servicios.routes');
+const solicitudRoutes = require('./routes/solicitudes.routes');
+const proveedorRoutes = require('./routes/proveedores.routes');
+const inventarioRoutes = require('./routes/inventario.routes');
+const chatRoutes = require('./routes/chat.routes');
+const satisfaccionRoutes = require('./routes/satisfaccion.routes');
+const reportesRoutes = require('./routes/reportes.routes');
+
+// Creación de la aplicación Express
 const app = express();
-app.use(cors());                 // Permite peticiones desde cualquier origen (frontend)
-app.use(bodyParser.json());      // Parsea el cuerpo de las peticiones como JSON
 
-/**
- * 1. Conexión a la Base de Datos
- * ---------------------------------------------------------------------
- * Se establece la conexión con el motor MySQL usando el pool de
- * conexiones de mysql2. Los datos de acceso corresponden al entorno
- * local de desarrollo (XAMPP/MySQL).
- */
-const db = mysql.createConnection({
-    host: 'localhost',          // Host del servidor de base de datos
-    user: 'nakeema_user',       // Usuario de MySQL
-    password: 'nakeema_segura', // Contraseña de MySQL
-    database: 'nakeema_db'      // Nombre de la base de datos
-});
+// Middlewares globales
+app.use(cors());              // Habilita peticiones desde cualquier origen (frontend)
+app.use(bodyParser.json());   // Parsea el cuerpo de las peticiones como JSON
 
-db.connect(err => {
-    if (err) {
-        console.error('Error conectando a MySQL: ' + err.stack);
-        return;
-    }
-    console.log('Conectado a la base de datos MySQL con éxito.');
-});
+// Configuración de prefijos por módulo de la API
+app.use('/api/auth', authRoutes);            // Registro e inicio de sesión
+app.use('/api/clientes', clienteRoutes);     // Gestión de clientes
+app.use('/api/tecnicos', tecnicoRoutes);     // Gestión de técnicos
+app.use('/api/servicios', servicioRoutes);   // Gestión de servicios
+app.use('/api/solicitudes', solicitudRoutes);// Gestión de solicitudes de servicio
+app.use('/api/proveedores', proveedorRoutes);// Gestión de proveedores
+app.use('/api/inventario', inventarioRoutes);// Gestión de inventario (repuestos)
+app.use('/api/chat', chatRoutes);            // Chat de soporte
+app.use('/api/satisfaccion', satisfaccionRoutes); // Encuestas de satisfacción
+app.use('/api/reportes', reportesRoutes);    // Reportes del sistema
 
-/**
- * 2. Endpoint de REGISTRO (Create)
- * ---------------------------------------------------------------------
- * Recibe en el cuerpo de la petición: { email, password, role_id }
- * Inserta el nuevo usuario en la tabla "usuarios" de la base de datos.
- */
-app.post('/api/register', (req, res) => {
-    // Extrae los datos enviados por el cliente
-    const { email, password, role_id } = req.body;
-
-    // Validación básica de campos obligatorios
-    if (!email || !password || !role_id) {
-        return res.status(400).json({
-            success: false,
-            message: 'Todos los campos son obligatorios (email, password, role_id)'
-        });
-    }
-
-    // Consulta SQL parametrizada para insertar el nuevo usuario
-    const sql = 'INSERT INTO usuarios (email, password, role_id) VALUES (?, ?, ?)';
-
-    db.query(sql, [email, password, role_id], (err, result) => {
-        // Manejo de errores del servidor de base de datos
-        if (err) {
-            // Error 1062 = duplicado (email ya registrado)
-            if (err.code === 'ER_DUP_ENTRY') {
-                return res.status(409).json({ success: false, message: 'El email ya está registrado' });
-            }
-            return res.status(500).json({ success: false, message: 'Error en el servidor' });
-        }
-
-        // Respuesta exitosa con el id del nuevo registro
-        res.status(201).json({
-            success: true,
-            message: 'Usuario registrado exitosamente',
-            id_usuario: result.insertId
-        });
+// Ruta raíz informativa de la API
+app.get('/', (req, res) => {
+    res.json({
+        nombre: 'Nakeema API REST',
+        version: '1.0.0',
+        descripcion: 'Servicios web del proyecto formativo Nakeema',
+        documentacion: 'Ver archivo API_DOCUMENTACION.md'
     });
 });
 
-/**
- * 3. Endpoint de INICIO DE SESIÓN (Login)
- * ---------------------------------------------------------------------
- * Recibe en el cuerpo de la petición: { email, password, role }
- * Consulta el usuario en la tabla "usuarios" junto con su rol.
- * Si las credenciales son correctas devuelve un mensaje de autenticación
- * satisfactoria; de lo contrario devuelve error de autenticación.
- */
-app.post('/api/login', (req, res) => {
-    // Extrae los datos enviados por el cliente
-    const { email, password, role } = req.body;
-
-    // Validación básica de campos obligatorios
-    if (!email || !password || !role) {
-        return res.status(400).json({
-            success: false,
-            message: 'Todos los campos son obligatorios (email, password, role)'
-        });
-    }
-
-    // Consulta SQL parametrizada para buscar al usuario y su rol
-    const sql = `
-        SELECT u.email, u.password, u.role_id, r.nombre_rol 
-        FROM usuarios u 
-        JOIN roles r ON u.role_id = r.id 
-        WHERE u.email = ? AND r.nombre_rol = ?`;
-
-    db.query(sql, [email, role], (err, results) => {
-        // Manejo de errores del servidor de base de datos
-        if (err) {
-            return res.status(500).json({ success: false, message: 'Error en el servidor' });
-        }
-
-        // Si existe un usuario con ese email y rol
-        if (results.length > 0) {
-            const user = results[0];
-
-            // Validación de contraseña (en producción se recomienda bcrypt)
-            if (user.password === password) {
-                // Autenticación satisfactoria
-                res.json({
-                    success: true,
-                    role: user.nombre_rol,
-                    message: "Login exitoso - Autenticación satisfactoria"
-                });
-            } else {
-                // Error de autenticación: contraseña incorrecta
-                res.status(401).json({ success: false, message: 'Error en la autenticación: contraseña incorrecta' });
-            }
-        } else {
-            // Error de autenticación: usuario o rol no encontrados
-            res.status(401).json({ success: false, message: 'Error en la autenticación: usuario no encontrado' });
-        }
-    });
+// Manejo global de rutas no encontradas (404)
+app.use((req, res) => {
+    res.status(404).json({ success: false, message: 'Ruta no encontrada' });
 });
 
-/**
- * 4. Arranque del servidor
- * ---------------------------------------------------------------------
- * El servicio web queda disponible en el puerto 3000
- */
-app.listen(3000, () => {
-    console.log('Servidor corriendo en http://localhost:3000');
+// Puerto de escucha del servidor (configurable por variable de entorno)
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+    console.log(`Servidor Nakeema API corriendo en http://localhost:${PORT}`);
 });
