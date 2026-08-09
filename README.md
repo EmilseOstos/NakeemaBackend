@@ -1,7 +1,8 @@
 # Nakeema API REST
 
-Servicios web (API REST) del proyecto formativo **Nakeema** — Evidencia
-**GA7-220501096-AA5-EV03 "Diseño y desarrollo de servicios web - proyecto"**.
+Servicios web (API REST) del proyecto formativo **Nakeema** — Evidencias:
+- **GA7-220501096-AA5-EV03 "Diseño y desarrollo de servicios web - proyecto"**
+- **GA7-220501096-AA5-EV04 "API del proyecto"** (testing con Postman)
 
 API desarrollada en **Node.js + Express** que expone los servicios necesarios
 para el software Nakeema: autenticación, clientes, técnicos, servicios,
@@ -53,7 +54,15 @@ Servidor disponible en `http://localhost:3000`.
 ## Documentación de los servicios
 
 Consulta [`API_DOCUMENTACION.md`](API_DOCUMENTACION.md) para ver el detalle de
-cada uno de los 44 endpoints de la API (petición, respuesta y errores).
+cada uno de los 43 endpoints de la API (petición, respuesta y errores).
+
+## Testing con Postman (AA5-EV04)
+
+- [`Nakeema_API.postman_collection.json`](Nakeema_API.postman_collection.json) — colección Postman
+  con las 43 peticiones lista para importar (Postman → Import)
+- [`ENDPOINTS.txt`](ENDPOINTS.txt) — listado completo de los endpoints
+- [`PRUEBAS_API.md`](PRUEBAS_API.md) — documento de pruebas con casos, respuestas esperadas y
+  espacio para los pantallazos
 
 ## Versionamiento
 

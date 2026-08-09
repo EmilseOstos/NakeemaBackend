@@ -1,0 +1,82 @@
+=====================================================================
+NAKEEMA API - ENDPOINTS DE LAS API's
+Evidencia: GA7-220501096-AA5-EV04 "API del proyecto"
+Servidor local: http://localhost:3000
+=====================================================================
+
+1. MÓDULO DE AUTENTICACIÓN (/api/auth)
+---------------------------------------------------------------------
+[POST] /api/auth/registro        Registrar un nuevo usuario
+[POST] /api/auth/login           Iniciar sesión (autenticación)
+[GET]  /api/auth/usuarios        Listar todos los usuarios
+
+2. MÓDULO DE CLIENTES (/api/clientes)
+---------------------------------------------------------------------
+[GET]    /api/clientes           Listar todos los clientes
+[GET]    /api/clientes/:id       Consultar cliente por id
+[POST]   /api/clientes           Crear un cliente
+[PUT]    /api/clientes/:id       Actualizar un cliente
+[DELETE] /api/clientes/:id       Eliminar un cliente
+
+3. MÓDULO DE TÉCNICOS (/api/tecnicos)
+---------------------------------------------------------------------
+[GET]    /api/tecnicos           Listar todos los técnicos
+[GET]    /api/tecnicos/:id       Consultar técnico por id
+[POST]   /api/tecnicos           Crear un técnico
+[PUT]    /api/tecnicos/:id       Actualizar un técnico
+[DELETE] /api/tecnicos/:id       Eliminar un técnico
+
+4. MÓDULO DE SERVICIOS (/api/servicios)
+---------------------------------------------------------------------
+[GET]    /api/servicios          Listar todos los servicios
+[GET]    /api/servicios/:id      Consultar servicio por id
+[POST]   /api/servicios          Crear un servicio
+[PUT]    /api/servicios/:id      Actualizar un servicio
+[DELETE] /api/servicios/:id      Eliminar un servicio
+[GET]    /api/servicios/tipos    Listar tipos de servicio
+[GET]    /api/servicios/estados  Listar estados de servicio
+
+5. MÓDULO DE SOLICITUDES (/api/solicitudes)
+---------------------------------------------------------------------
+[GET]  /api/solicitudes               Listar todas las solicitudes
+[POST] /api/solicitudes               Crear una solicitud
+[PUT]  /api/solicitudes/:id/estado    Actualizar estado de una solicitud
+[GET]  /api/solicitudes/tecnico/:id   Solicitudes asignadas a un técnico
+
+6. MÓDULO DE PROVEEDORES (/api/proveedores)
+---------------------------------------------------------------------
+[GET]    /api/proveedores         Listar todos los proveedores
+[GET]    /api/proveedores/:id     Consultar proveedor por id
+[POST]   /api/proveedores         Crear un proveedor
+[PUT]    /api/proveedores/:id     Actualizar un proveedor
+[DELETE] /api/proveedores/:id     Eliminar un proveedor
+
+7. MÓDULO DE INVENTARIO (/api/inventario)
+---------------------------------------------------------------------
+[GET]    /api/inventario            Listar todos los repuestos
+[GET]    /api/inventario/:id        Consultar repuesto por id
+[POST]   /api/inventario            Crear un repuesto
+[PUT]    /api/inventario/:id        Actualizar un repuesto
+[DELETE] /api/inventario/:id        Eliminar un repuesto
+[GET]    /api/inventario/stock/bajo Repuestos con stock bajo (<= 5)
+
+8. MÓDULO DE CHAT (/api/chat)
+---------------------------------------------------------------------
+[GET]  /api/chat/mensajes         Listar todos los mensajes del chat
+[POST] /api/chat/mensajes         Enviar un nuevo mensaje
+
+9. MÓDULO DE SATISFACCIÓN (/api/satisfaccion)
+---------------------------------------------------------------------
+[GET]  /api/satisfaccion          Listar todas las encuestas
+[POST] /api/satisfaccion          Registrar una encuesta
+[GET]  /api/satisfaccion/promedio Calcular promedio de calificación
+
+10. MÓDULO DE REPORTES (/api/reportes)
+---------------------------------------------------------------------
+[GET] /api/reportes/servicios     Reporte de servicios por estado
+[GET] /api/reportes/tecnicos      Reporte de técnicos por estado
+[GET] /api/reportes/inventario    Reporte del valor del inventario
+
+---------------------------------------------------------------------
+TOTAL DE ENDPOINTS: 43
+---------------------------------------------------------------------

@@ -1,0 +1,1149 @@
+{
+  "info": {
+    "name": "Nakeema API - Testing (AA5-EV04)",
+    "description": "Colección para el testing de las API del proyecto Nakeema con Postman. Evidencia GA7-220501096-AA5-EV04.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Autenticacion",
+      "item": [
+        {
+          "name": "POST /registro - Registrar usuario",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/auth/registro",
+              "host": [
+                "localhost:3000"
+              ],
+              "path": [
+                "/api/auth/registro"
+              ]
+            },
+            "description": "Endpoint: POST /api/auth/registro",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"nuevo@correo.com\",\n    \"password\": \"clave123\",\n    \"nombre\": \"Nuevo Usuario\",\n    \"role_id\": 3\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "POST /login - Iniciar sesion",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/auth/login",
+              "host": [
+                "localhost:3000"
+              ],
+              "path": [
+                "/api/auth/login"
+              ]
+            },
+            "description": "Endpoint: POST /api/auth/login",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"admin@nakeema.com\",\n    \"password\": \"admin123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "GET /usuarios - Listar usuarios",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/auth/usuarios",
+              "host": [
+                "localhost:3000"
+              ],
+              "path": [
+                "/api/auth/usuarios"
+              ]
+            },
+            "description": "Endpoint: GET /api/auth/usuarios"
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Clientes",
+      "item": [
+        {
+          "name": "GET / - Listar clientes",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/clientes/",
+              "host": [
+                "localhost:3000"
+              ],
+              "path": [
+                "/api/clientes/"
+              ]
+            },
+            "description": "Endpoint: GET /api/clientes/"
+          }
+        },
+        {
+          "name": "GET /1 - Consultar cliente por id",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/clientes/1",
+              "host": [
+                "localhost:3000"
+              ],
+              "path": [
+                "/api/clientes/1"
+              ]
+            },
+            "description": "Endpoint: GET /api/clientes/1"
+          }
+        },
+        {
+          "name": "POST / - Crear cliente",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/clientes/",
+              "host": [
+                "localhost:3000"
+              ],
+              "path": [
+                "/api/clientes/"
+              ]
+            },
+            "description": "Endpoint: POST /api/clientes/",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"nombre\": \"Laura Díaz\",\n    \"email\": \"laura@correo.com\",\n    \"telefono\": \"3005556677\",\n    \"direccion\": \"Av 8 # 9-10\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "PUT /1 - Actualizar cliente",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/clientes/1",
+              "host": [
+                "localhost:3000"
+              ],
+              "path": [
+                "/api/clientes/1"
+              ]
+            },
+            "description": "Endpoint: PUT /api/clientes/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"nombre\": \"Carlos Pérez\",\n    \"email\": \"carlos@correo.com\",\n    \"telefono\": \"3001112233\",\n    \"direccion\": \"Calle 1 # 2-3\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "DELETE /1 - Eliminar cliente",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/clientes/1",
+              "host": [
+                "localhost:3000"
+              ],
+              "path": [
+                "/api/clientes/1"
+              ]
+            },
+            "description": "Endpoint: DELETE /api/clientes/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. Tecnicos",
+      "item": [
+        {
+          "name": "GET / - Listar tecnicos",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/tecnicos/",
+              "host": [
+                "localhost:3000"
+              ],
+              "path": [
+                "/api/tecnicos/"
+              ]
+            },
+            "description": "Endpoint: GET /api/tecnicos/"
+          }
+        },
+        {
+          "name": "GET /1 - Consultar tecnico por id",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/tecnicos/1",
+              "host": [
+                "localhost:3000"
+              ],
+              "path": [
+                "/api/tecnicos/1"
+              ]
+            },
+            "description": "Endpoint: GET /api/tecnicos/1"
+          }
+        },
+        {
+          "name": "POST / - Crear tecnico",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/tecnicos/",
+              "host": [
+                "localhost:3000"
+              ],
+              "path": [
+                "/api/tecnicos/"
+              ]
+            },
+            "description": "Endpoint: POST /api/tecnicos/",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"nombre\": \"Pedro Ramírez\",\n    \"email\": \"pedro@correo.com\",\n    \"telefono\": \"3008889900\",\n    \"especialidad\": \"Mantenimiento Preventivo\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "PUT /1 - Actualizar tecnico",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/tecnicos/1",
+              "host": [
+                "localhost:3000"
+              ],
+              "path": [
+                "/api/tecnicos/1"
+              ]
+            },
+            "description": "Endpoint: PUT /api/tecnicos/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"nombre\": \"Juan Rodríguez\",\n    \"email\": \"juan@correo.com\",\n    \"telefono\": \"3007778899\",\n    \"especialidad\": \"Reparación Eléctrica\",\n    \"estado\": \"Disponible\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "DELETE /1 - Eliminar tecnico",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/tecnicos/1",
+              "host": [
+                "localhost:3000"
+              ],
+              "path": [
+                "/api/tecnicos/1"
+              ]
+            },
+            "description": "Endpoint: DELETE /api/tecnicos/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "4. Servicios",
+      "item": [
+        {
+          "name": "GET / - Listar servicios",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/servicios/",
+              "host": [
+                "localhost:3000"
+              ],
+              "path": [
+                "/api/servicios/"
+              ]
+            },
+            "description": "Endpoint: GET /api/servicios/"
+          }
+        },
+        {
+          "name": "GET /1 - Consultar servicio por id",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/servicios/1",
+              "host": [
+                "localhost:3000"
+              ],
+              "path": [
+                "/api/servicios/1"
+              ]
+            },
+            "description": "Endpoint: GET /api/servicios/1"
+          }
+        },
+        {
+          "name": "POST / - Crear servicio",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/servicios/",
+              "host": [
+                "localhost:3000"
+              ],
+              "path": [
+                "/api/servicios/"
+              ]
+            },
+            "description": "Endpoint: POST /api/servicios/",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"descripcion\": \"Mantenimiento preventivo computador\",\n    \"precio\": 80000,\n    \"tipo_servicio_id\": 1,\n    \"estado_servicio_id\": 1,\n    \"tecnico_id\": 1,\n    \"cliente_id\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "PUT /1 - Actualizar servicio",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/servicios/1",
+              "host": [
+                "localhost:3000"
+              ],
+              "path": [
+                "/api/servicios/1"
+              ]
+            },
+            "description": "Endpoint: PUT /api/servicios/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"descripcion\": \"Mantenimiento preventivo computador\",\n    \"precio\": 80000,\n    \"tipo_servicio_id\": 1,\n    \"estado_servicio_id\": 2,\n    \"tecnico_id\": 1,\n    \"cliente_id\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "DELETE /1 - Eliminar servicio",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/servicios/1",
+              "host": [
+                "localhost:3000"
+              ],
+              "path": [
+                "/api/servicios/1"
+              ]
+            },
+            "description": "Endpoint: DELETE /api/servicios/1"
+          }
+        },
+        {
+          "name": "GET /tipos - Listar tipos de servicio",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/servicios/tipos",
+              "host": [
+                "localhost:3000"
+              ],
+              "path": [
+                "/api/servicios/tipos"
+              ]
+            },
+            "description": "Endpoint: GET /api/servicios/tipos"
+          }
+        },
+        {
+          "name": "GET /estados - Listar estados de servicio",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/servicios/estados",
+              "host": [
+                "localhost:3000"
+              ],
+              "path": [
+                "/api/servicios/estados"
+              ]
+            },
+            "description": "Endpoint: GET /api/servicios/estados"
+          }
+        }
+      ]
+    },
+    {
+      "name": "5. Solicitudes",
+      "item": [
+        {
+          "name": "GET / - Listar solicitudes",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/solicitudes/",
+              "host": [
+                "localhost:3000"
+              ],
+              "path": [
+                "/api/solicitudes/"
+              ]
+            },
+            "description": "Endpoint: GET /api/solicitudes/"
+          }
+        },
+        {
+          "name": "POST / - Crear solicitud",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/solicitudes/",
+              "host": [
+                "localhost:3000"
+              ],
+              "path": [
+                "/api/solicitudes/"
+              ]
+            },
+            "description": "Endpoint: POST /api/solicitudes/",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"cliente_id\": 1,\n    \"descripcion\": \"Se solicita soporte para impresora\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "PUT /1/estado - Actualizar estado solicitud",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/solicitudes/1/estado",
+              "host": [
+                "localhost:3000"
+              ],
+              "path": [
+                "/api/solicitudes/1/estado"
+              ]
+            },
+            "description": "Endpoint: PUT /api/solicitudes/1/estado",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"estado\": \"En Proceso\",\n    \"tecnico_id\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "GET /tecnico/1 - Solicitudes por tecnico",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/solicitudes/tecnico/1",
+              "host": [
+                "localhost:3000"
+              ],
+              "path": [
+                "/api/solicitudes/tecnico/1"
+              ]
+            },
+            "description": "Endpoint: GET /api/solicitudes/tecnico/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "6. Proveedores",
+      "item": [
+        {
+          "name": "GET / - Listar proveedores",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/proveedores/",
+              "host": [
+                "localhost:3000"
+              ],
+              "path": [
+                "/api/proveedores/"
+              ]
+            },
+            "description": "Endpoint: GET /api/proveedores/"
+          }
+        },
+        {
+          "name": "GET /1 - Consultar proveedor por id",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/proveedores/1",
+              "host": [
+                "localhost:3000"
+              ],
+              "path": [
+                "/api/proveedores/1"
+              ]
+            },
+            "description": "Endpoint: GET /api/proveedores/1"
+          }
+        },
+        {
+          "name": "POST / - Crear proveedor",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/proveedores/",
+              "host": [
+                "localhost:3000"
+              ],
+              "path": [
+                "/api/proveedores/"
+              ]
+            },
+            "description": "Endpoint: POST /api/proveedores/",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"nombre\": \"Suministros Técnicos Ltda\",\n    \"email\": \"ventas@suministros.com\",\n    \"telefono\": \"3109876543\",\n    \"direccion\": \"Calle 10 # 20-30\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "PUT /1 - Actualizar proveedor",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/proveedores/1",
+              "host": [
+                "localhost:3000"
+              ],
+              "path": [
+                "/api/proveedores/1"
+              ]
+            },
+            "description": "Endpoint: PUT /api/proveedores/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"nombre\": \"ElectroRepuestos S.A.\",\n    \"email\": \"ventas@electro.com\",\n    \"telefono\": \"3101234567\",\n    \"direccion\": \"Zona Industrial\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "DELETE /1 - Eliminar proveedor",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/proveedores/1",
+              "host": [
+                "localhost:3000"
+              ],
+              "path": [
+                "/api/proveedores/1"
+              ]
+            },
+            "description": "Endpoint: DELETE /api/proveedores/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "7. Inventario",
+      "item": [
+        {
+          "name": "GET / - Listar repuestos",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/inventario/",
+              "host": [
+                "localhost:3000"
+              ],
+              "path": [
+                "/api/inventario/"
+              ]
+            },
+            "description": "Endpoint: GET /api/inventario/"
+          }
+        },
+        {
+          "name": "GET /1 - Consultar repuesto por id",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/inventario/1",
+              "host": [
+                "localhost:3000"
+              ],
+              "path": [
+                "/api/inventario/1"
+              ]
+            },
+            "description": "Endpoint: GET /api/inventario/1"
+          }
+        },
+        {
+          "name": "POST / - Crear repuesto",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/inventario/",
+              "host": [
+                "localhost:3000"
+              ],
+              "path": [
+                "/api/inventario/"
+              ]
+            },
+            "description": "Endpoint: POST /api/inventario/",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"nombre\": \"Teclado USB\",\n    \"descripcion\": \"Teclado estándar\",\n    \"stock\": 15,\n    \"precio\": 45000,\n    \"proveedor_id\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "PUT /1 - Actualizar repuesto",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/inventario/1",
+              "host": [
+                "localhost:3000"
+              ],
+              "path": [
+                "/api/inventario/1"
+              ]
+            },
+            "description": "Endpoint: PUT /api/inventario/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"nombre\": \"Cable HDMI 2m\",\n    \"descripcion\": \"Cable de alta velocidad\",\n    \"stock\": 20,\n    \"precio\": 25000,\n    \"proveedor_id\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "DELETE /1 - Eliminar repuesto",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/inventario/1",
+              "host": [
+                "localhost:3000"
+              ],
+              "path": [
+                "/api/inventario/1"
+              ]
+            },
+            "description": "Endpoint: DELETE /api/inventario/1"
+          }
+        },
+        {
+          "name": "GET /stock/bajo - Repuestos con stock bajo",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/inventario/stock/bajo",
+              "host": [
+                "localhost:3000"
+              ],
+              "path": [
+                "/api/inventario/stock/bajo"
+              ]
+            },
+            "description": "Endpoint: GET /api/inventario/stock/bajo"
+          }
+        }
+      ]
+    },
+    {
+      "name": "8. Chat",
+      "item": [
+        {
+          "name": "GET /mensajes - Listar mensajes del chat",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/chat/mensajes",
+              "host": [
+                "localhost:3000"
+              ],
+              "path": [
+                "/api/chat/mensajes"
+              ]
+            },
+            "description": "Endpoint: GET /api/chat/mensajes"
+          }
+        },
+        {
+          "name": "POST /mensajes - Enviar mensaje",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/chat/mensajes",
+              "host": [
+                "localhost:3000"
+              ],
+              "path": [
+                "/api/chat/mensajes"
+              ]
+            },
+            "description": "Endpoint: POST /api/chat/mensajes",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"usuario_id\": 1,\n    \"mensaje\": \"Buen día, necesito ayuda con mi equipo\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "9. Satisfaccion",
+      "item": [
+        {
+          "name": "GET / - Listar encuestas",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/satisfaccion/",
+              "host": [
+                "localhost:3000"
+              ],
+              "path": [
+                "/api/satisfaccion/"
+              ]
+            },
+            "description": "Endpoint: GET /api/satisfaccion/"
+          }
+        },
+        {
+          "name": "POST / - Registrar encuesta",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/satisfaccion/",
+              "host": [
+                "localhost:3000"
+              ],
+              "path": [
+                "/api/satisfaccion/"
+              ]
+            },
+            "description": "Endpoint: POST /api/satisfaccion/",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"cliente_id\": 1,\n    \"calificacion\": 5,\n    \"comentario\": \"Excelente servicio\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "GET /promedio - Promedio de satisfaccion",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/satisfaccion/promedio",
+              "host": [
+                "localhost:3000"
+              ],
+              "path": [
+                "/api/satisfaccion/promedio"
+              ]
+            },
+            "description": "Endpoint: GET /api/satisfaccion/promedio"
+          }
+        }
+      ]
+    },
+    {
+      "name": "10. Reportes",
+      "item": [
+        {
+          "name": "GET /servicios - Reporte de servicios por estado",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/reportes/servicios",
+              "host": [
+                "localhost:3000"
+              ],
+              "path": [
+                "/api/reportes/servicios"
+              ]
+            },
+            "description": "Endpoint: GET /api/reportes/servicios"
+          }
+        },
+        {
+          "name": "GET /tecnicos - Reporte de tecnicos por estado",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/reportes/tecnicos",
+              "host": [
+                "localhost:3000"
+              ],
+              "path": [
+                "/api/reportes/tecnicos"
+              ]
+            },
+            "description": "Endpoint: GET /api/reportes/tecnicos"
+          }
+        },
+        {
+          "name": "GET /inventario - Reporte de inventario",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/reportes/inventario",
+              "host": [
+                "localhost:3000"
+              ],
+              "path": [
+                "/api/reportes/inventario"
+              ]
+            },
+            "description": "Endpoint: GET /api/reportes/inventario"
+          }
+        }
+      ]
+    }
+  ]
+}
